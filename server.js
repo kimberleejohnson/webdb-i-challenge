@@ -2,6 +2,8 @@ const express = require('express');
 
 const server = express();
 
+// Installing global middleware that lets this express code *use* json
+// Required 
 server.use(express.json()); 
 
 // Calling in my data 
