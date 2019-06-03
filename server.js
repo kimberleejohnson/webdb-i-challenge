@@ -23,11 +23,21 @@ server.post('/', async (req, res) => {
 // GET (R IN CRUD)
 server.get('/', async (req, res) => {
     try {
-        const accounts = await Accounts.find(); 
+        const accounts = await Accounts.findById(); 
         res.status(200).json(accounts); 
     } catch (error) {
         console.log(error); 
         res.status(500).json({message: "Whoopsie daisy! Error retrieving the accounts."})
+    }
+})
+
+server.get('/:id', async (req, res) => {
+    try {
+        const account = await Accounts.findById(req.params.id); 
+        res.status(200).json(account); 
+    } catch (error) {
+        console.log(error); 
+        res.status(500).json({message: "Whoopsie daisy! Error retrieving the account."})
     }
 })
 
