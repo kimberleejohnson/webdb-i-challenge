@@ -27,7 +27,6 @@ SELECT CustomerName from Customers
 WHERE CustomerName like '%market%'
 
 ## add a customer record for _"The Dollywood"_, the contact name is _"Dolly Parton"_ the address is _"1 Dumplin Lane"_ in _"Tennessee Hills"_, postal code _"111"_ and the country is _"Love Wins"_.
--- SELECT * from Customers 
 INSERT INTO CUSTOMERS (CustomerName, ContactName, Address, City, PostalCode, Country)
 VALUES ('The Dollywood', 'Dolly Parton', '1 Dumplin Lane', 'Tennessee Hills', '111','Love Wins')
 
@@ -39,12 +38,15 @@ WHERE CustomerId = 92
 ## STRETCH PROBLEMS START HERE ##
 
 ## list orders grouped by customer showing the number of orders per customer. _Rattlesnake Canyon Grocery_ should have 7 orders.
--- SELECT * from Orders
 SELECT CustomerName, COUNT(Orders.CustomerID) AS TotalOrderQuantity 
 FROM Customers join Orders on (Orders.CustomerID = Customers.CustomerID)
 group by Orders.CustomerID
 
 ## list customers names and the number of orders per customer. Sort the list by number of orders in descending order. _Ernst Handel_ should be at the top with 10 orders followed by _QUICK-Stop_, _Rattlesnake Canyon Grocery_ and _Wartian Herkku_ with 7 orders each.
+SELECT CustomerName, COUNT(Orders.CustomerID) AS TotalOrderQuantity 
+FROM Customers join Orders on (Orders.CustomerID = Customers.CustomerID)
+GROUP BY Orders.CustomerID
+ORDER BY TotalOrderQuantity desc
 
 ## list orders grouped by customer's city showing number of orders per city. Returns 58 Records with _Aachen_ showing 2 orders and _Albuquerque_ showing 7 orders.
 
