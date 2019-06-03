@@ -32,6 +32,14 @@ server.get('/', async (req, res) => {
 })
 
 // PUT (U IN CRUD)
+server.put('/:id', async (req, res) => {
+    try {
+        res.status(200).json(await Accounts.update(req.params.id, req.body));
+    } catch (error) {
+        console.log(error); 
+        res.status(500).json({message: "Whoopsies! Problem updating the account"})
+    }
+});
 
 // DELETE (D IN CRUD)
 
