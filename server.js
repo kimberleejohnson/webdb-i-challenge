@@ -42,5 +42,13 @@ server.put('/:id', async (req, res) => {
 });
 
 // DELETE (D IN CRUD)
+server.delete('/:id', async (req, res) => {
+    try {
+        res.status(200).json(await Accounts.remove(req.params.id)); 
+    } catch (error) {
+        console.log(error); 
+        res.status(500).json({message: "Easy cowboy! There's an error removing the account."})
+    }
+}); 
 
 module.exports = server;
