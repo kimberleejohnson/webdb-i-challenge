@@ -55,3 +55,5 @@ GROUP BY Customers.City
 ORDER BY TotalOrderQuantity desc
 
 ## delete all users that have no orders. Should delete 17 (or 18 if you haven't deleted the record added) records.
+DELETE FROM Customers
+WHERE CustomerID NOT IN (SELECT distinct CustomerID from Orders) 
